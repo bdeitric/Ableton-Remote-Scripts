@@ -1,0 +1,4 @@
+from css_bd_live_rig_controller_v1 import css_bd_live_rig_controller_v1
+
+def create_instance(c_instance):
+	return css_bd_live_rig_controller_v1(c_instance)

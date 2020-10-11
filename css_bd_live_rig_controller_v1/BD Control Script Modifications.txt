@@ -1,0 +1,31 @@
+	
+	
+---  NEED TO FIX THIS - Selected Device Listeners
+	
+	def _selected_device_listener(self):
+		global active_mode, prev_active_mode, modes
+		self.log("selected device changed")
+		self.log("BD Modification - do not remove mode led listeners and readd")
+		#mode_to_call = getattr(self, "_remove_mode" + active_mode + "_led_listeners")
+		#mode_to_call()
+		#mode_to_call = getattr(self, "_mode" + active_mode + "_led_listeners")
+		#mode_to_call()
+		self.device_feedback()
+
+
+=======
+
+	def midi_cc_ch_0_val_86_mode1_listener(self, value):
+		self.midi_cc_ch_0_val_86.cur_val = value # make current velocity value accessible on object
+		### Reaction Code start
+		self.show_message = "BD: Stop Button Pressed"
+		self.song().tracks[11].clip_slots[0].stop()
+
+
+=======
+
+	def midi_cc_ch_0_val_87_mode1_listener(self, value):
+		self.midi_cc_ch_0_val_87.cur_val = value # make current velocity value accessible on object
+		### Reaction Code start
+		self.show_message = "BD: Start Button Pressed"
+		self.song().view.selected_scene.fire()
